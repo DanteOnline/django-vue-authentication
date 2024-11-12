@@ -12,7 +12,8 @@ This example contains 6 steps in the different branches.
 - [step-3-frontend](https://github.com/DanteOnline/django-vue-authentication/tree/step-3-frontend) - simple vue frontend
 - [step-4-login-form](https://github.com/DanteOnline/django-vue-authentication/tree/step-4-login-form) - login form and callback
 - [step-5-get-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-5-get-token) - authentication with token
-- [step-6-save-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-6-save-token) - **CURRENT** - save token to `LocalStorage` and `Cookies`
+- [step-6-save-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-6-save-token) - save token to `LocalStorage` and `Cookies`
+
 ## Usage
 
 1. In one terminal
@@ -27,11 +28,11 @@ npm i
 npm run dev
 ```
 
-## Description
+## Examples
 
-1. add `universal-cookie` to `package.json`
-2. update `App.vue` to save token
+You can move step by step changing branches. Or download final example from `main` branch
 
-## Result
+## Download all examples
 
-Working application with token authentication with backend and frontend
+You can use `make download_examples` command to download all examples as folders. 
+Example will be save to `../django-vue-authentications/<subfolder>/`
