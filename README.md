@@ -11,8 +11,8 @@ This example contains 6 steps in the different branches.
 - [step-2-auth-backend](https://github.com/DanteOnline/django-vue-authentication/tree/step-2-auth-backend)  - token authentication on backend
 - [step-3-frontend](https://github.com/DanteOnline/django-vue-authentication/tree/step-3-frontend) - simple vue frontend
 - [step-4-login-form](https://github.com/DanteOnline/django-vue-authentication/tree/step-4-login-form) - login form and callback
-- [step-5-get-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-5-get-token) - **CURRENT** - authentication with token
-- [step-6-save-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-6-save-token) - save token to `LocalStorage` and `Cookies`
+- [step-5-get-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-5-get-token) - authentication with token
+- [step-6-save-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-6-save-token) - **CURRENT** - save token to `LocalStorage` and `Cookies`
 ## Usage
 
 1. In one terminal
