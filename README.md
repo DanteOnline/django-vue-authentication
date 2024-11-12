@@ -7,7 +7,7 @@ Token authentication example on **Django** and **Vue** step by step.
 This example contains 6 steps in the different branches.
 
 - [main](https://github.com/DanteOnline/django-vue-authentication) - final version
-- [step-1-api](https://github.com/DanteOnline/django-vue-authentication) - **CURRENT** - simple api on **DRF**
+- [step-1-api](https://github.com/DanteOnline/django-vue-authentication/tree/step-1-api) - **CURRENT** - simple api on **DRF**
 
 ## Usage
 
