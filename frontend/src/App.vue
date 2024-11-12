@@ -1,7 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.svg">
   <p></p>
-  <LoginForm />
+  <LoginForm @auth="auth" />
   <p></p>
   <button v-on:click="getAnimals">Получить список животных</button>
   <p></p>
@@ -24,7 +24,8 @@ export default {
     return {
       animals: [
         //{'name': 'Борис', 'kind': 'Белый', 'family': 'Медведь'},
-      ]
+      ],
+      isAuth: false
     }
   },
   methods: {
@@ -33,6 +34,11 @@ export default {
           .then(response => {
               this.animals = response.data
           }).catch(error => console.log(error))
+    },
+    auth(login, password) {
+      console.log(login)
+      console.log(password)
+      this.isAuth = true
     }
   }
 }
