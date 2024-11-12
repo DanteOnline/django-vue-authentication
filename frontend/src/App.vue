@@ -1,7 +1,12 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.svg">
   <p></p>
-  <LoginForm @auth="auth" />
+  <div v-if="isAuth">
+    <button v-on:click="logout">Logout</button>
+  </div>
+  <div v-else>
+    <LoginForm @auth="auth" />
+  </div>
   <p></p>
   <button v-on:click="getAnimals">Получить список животных</button>
   <p></p>
@@ -25,20 +30,37 @@ export default {
       animals: [
         //{'name': 'Борис', 'kind': 'Белый', 'family': 'Медведь'},
       ],
-      isAuth: false
+      isAuth: false,
+      token: ''
     }
   },
   methods: {
       getAnimals() {
-      axios.get('http://127.0.0.1:8000/api/animals/')
-          .then(response => {
-              this.animals = response.data
-          }).catch(error => console.log(error))
+        let headers = {
+          'Content-Type': 'application/json'
+        }
+        if (this.isAuth) {
+          headers['Authorization'] = 'Token ' + this.token
+        }
+        axios.get('http://127.0.0.1:8000/api/animals/', {headers})
+            .then(response => {
+                this.animals = response.data
+            }).catch(error => console.log(error))
     },
     auth(login, password) {
-      console.log(login)
-      console.log(password)
-      this.isAuth = true
+      // console.log(login)
+      // console.log(password)
+      // this.isAuth = true
+      axios.post('http://127.0.0.1:8000/api-token-auth/', {username: login, password: password})
+      .then(response => {
+          const token = response.data['token']
+          this.token = token
+          this.isAuth = true
+      }).catch(error => alert('Неверный логин или пароль' + error))
+    },
+    logout() {
+      this.isAuth = false
+      this.token = ''
     }
   }
 }
