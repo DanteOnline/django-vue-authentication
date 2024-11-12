@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import Cookies from 'universal-cookie';
 import axios from 'axios'
 import LoginForm from './components/Auth.vue'
 import AnimalsList from './components/Animals.vue'
@@ -31,7 +32,6 @@ export default {
         //{'name': 'Борис', 'kind': 'Белый', 'family': 'Медведь'},
       ],
       isAuth: false,
-      token: ''
     }
   },
   methods: {
@@ -40,7 +40,8 @@ export default {
           'Content-Type': 'application/json'
         }
         if (this.isAuth) {
-          headers['Authorization'] = 'Token ' + this.token
+          const token = this.getToken()
+          headers['Authorization'] = 'Token ' + token
         }
         axios.get('http://127.0.0.1:8000/api/animals/', {headers})
             .then(response => {
@@ -54,15 +55,48 @@ export default {
       axios.post('http://127.0.0.1:8000/api-token-auth/', {username: login, password: password})
       .then(response => {
           const token = response.data['token']
-          this.token = token
+          this.saveToken(token)
           this.isAuth = true
       }).catch(error => alert('Неверный логин или пароль' + error))
     },
     logout() {
       this.isAuth = false
-      this.token = ''
+      this.removeToken()
+    },
+    saveToken(token) {
+      localStorage.setItem('token', token)
+      const cookies = new Cookies()
+      //cookies.set('token', token, {'httpOnly': true})
+      cookies.set('token', token)
+    },
+    getToken() {
+      // локалстораж
+      const token_localstorage = localStorage.getItem('token')
+      // куки
+      //const cookies = new Cookies()
+      //const token_cookie = cookies.get('token')
+      return token_localstorage
+      //return token_cookie
+    },
+    removeToken() {
+      //локалстораж
+      localStorage.setItem('token', '')
+      //куки
+      const cookies = new Cookies()
+      cookies.set('token', '')
     }
+  },
+  mounted() {
+    const token = this.getToken()
+    console.log(token)
+    if (token != null) {
+      if (token !== '') {
+        this.isAuth = true
+      }
+    }
+    
   }
+
 }
 </script>
 
