@@ -12,6 +12,7 @@ This example contains 6 steps in the different branches.
 - [step-3-frontend](https://github.com/DanteOnline/django-vue-authentication/tree/step-3-frontend) - simple vue frontend
 - [step-4-login-form](https://github.com/DanteOnline/django-vue-authentication/tree/step-4-login-form) - login form and callback
 - [step-5-get-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-5-get-token) - **CURRENT** - authentication with token
+- [step-6-save-token](https://github.com/DanteOnline/django-vue-authentication/tree/step-6-save-token) - save token to `LocalStorage` and `Cookies`
 ## Usage
 
 1. In one terminal
@@ -28,11 +29,9 @@ npm run dev
 
 ## Description
 
-1. uncomment `IsAuthenticated` permissions in backend `settings.py`
-2. in `urls.py` add url for authentication by token
-3. change markdown in `App.vue`
-4. add login and logout functions in frontend
+1. add `universal-cookie` to `package.json`
+2. update `App.vue` to save token
 
 ## Result
 
-Login by token then get data from backend when logout. 
+Working application with token authentication with backend and frontend
